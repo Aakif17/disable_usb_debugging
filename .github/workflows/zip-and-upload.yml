@@ -25,9 +25,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v1.1
-          release_name: Release v1.1
-          body: This is a sample release.
+          tag_name: v1.2
+          release_name: Release v1.2
+          body: This is another sample release.
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
