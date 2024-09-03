@@ -4,4 +4,4 @@ version=v1
 versionCode=1
 author=Aakif
 description=Disables USB Debugging after every reboot
-updateJson=https://github.com/Aakif17/disable-usb-debugging/blob/main/update.json
+updateJson=https://github.com/Aakif17/disable_usb_debugging/blob/main/update.json
