@@ -1,0 +1,34 @@
+name: Zip and Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Create zip file
+        run: |
+          zip -r disable_usb_debugging.zip ../../../* !../../../README.md
+      - name: Create GitHub release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: v1.0
+          name: Release v1.0
+          body: This is a sample release.
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: disable_usb_debugging.zip
+          path: ./disable_usb_debugging.zip
+      - name: Attach artifact to release
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./disable_usb_debugging.zip
+          asset_name: disable_usb_debugging.zip

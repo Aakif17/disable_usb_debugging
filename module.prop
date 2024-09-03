@@ -1,7 +1,7 @@
 id=disable_usb_debugging
 name=Disable USB Debugging on Boot
-version=v1
-versionCode=1
+version=v1.0
+versionCode=100
 author=Aakif
 description=Disables USB Debugging after every reboot
 updateJson=https://github.com/Aakif17/disable_usb_debugging/blob/main/update.json
