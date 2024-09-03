@@ -19,7 +19,7 @@ jobs:
         uses: actions/create-release@v1
         with:
           tag_name: v1.0
-          name: Release v1.0
+          release_name: Release v1.0
           body: This is a sample release.
       - name: Upload artifact
         uses: actions/upload-artifact@v3
