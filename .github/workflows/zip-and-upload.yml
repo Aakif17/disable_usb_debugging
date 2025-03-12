@@ -11,34 +11,19 @@ jobs:
 
     permissions:
       contents: write
-      pull-requests: write
-      repository-projects: write
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Create zip file
-        run: |
-          zip -r disable_usb_debugging.zip ./*
-      - name: Create GitHub release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: zip -r disable_usb_debugging.zip ./*
+
+      - name: Create GitHub release and upload asset
+        uses: softprops/action-gh-release@v1
         with:
           tag_name: v1.4
           release_name: Release v1.4
           body: This is another sample release.
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: disable_usb_debugging.zip
-          path: ./disable_usb_debugging.zip
-      - name: Attach artifact to release
-        uses: actions/upload-release-asset@v1
+          files: disable_usb_debugging.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./disable_usb_debugging.zip
-          asset_name: disable_usb_debugging.zip
-          asset_content_type: application/zip
